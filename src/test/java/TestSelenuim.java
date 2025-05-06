@@ -1,3 +1,4 @@
+import ObjectPage.Book;
 import ObjectPage.bookStorePage;
 import ObjectPage.loginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -8,9 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -28,44 +28,38 @@ public class TestSelenuim {
         driver.get("https://demoqa.com/login");
         login = PageFactory.initElements(driver, loginPage.class);
         bookStore = PageFactory.initElements(driver, bookStorePage.class);
-
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @Test
     public void login() throws InterruptedException {
-        Thread.sleep(5000);
         login.loginActions("efrat", "@Efrat1234");
     }
 
     @Test
     public void goToStore() throws InterruptedException {
-        Thread.sleep(5000);
         driver.findElement(By.id("gotoStore")).click();
     }
 
     @Test
     public void search1() throws InterruptedException {
-        Thread.sleep(5000);
         bookStore.search("git Pocket");
-        assertEquals(bookStore.getRowCount(),1);
+        assertEquals(bookStore.getRowCount(), 1);
     }
 
     @Test
     public void search2() throws InterruptedException {
-        Thread.sleep(5000);
         bookStore.search("VeriSoft");
-        assertEquals(bookStore.getRowCount(),0);
+        assertEquals(bookStore.getRowCount(), 0);
         assertTrue(bookStore.NoData());
     }
 
     @Test
     public void getBooksAndPrint() throws InterruptedException {
-        Thread.sleep(5000);
-        List<Books> books= bookStore.getBooksFromSite();
-        Thread.sleep(5000);
+        List<Book> books = bookStore.getBooksFromSite();
 
-        for (Books book : books) {
-            book.printBook();
+        for (Book book : books) {
+            book.printDetails();
         }
     }
 

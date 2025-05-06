@@ -11,14 +11,15 @@ public class loginPage {
     public loginPage(WebDriver driver) {
         this.driver = driver;
     }
-    @FindBy(how= How.ID ,using="userName")
+
+    @FindBy(how = How.ID, using = "userName")
     public WebElement username;
-    @FindBy(how = How.ID ,using="password")
+    @FindBy(how = How.ID, using = "password")
     public WebElement password;
-    @FindBy(how = How.ID,using = "login")
+    @FindBy(how = How.ID, using = "login")
     public WebElement loginButton;
 
-    public  void loginActions(String username1, String password1){
+    public void loginActions(String username1, String password1) {
         username.sendKeys(username1);
         password.sendKeys(password1);
         loginButton.click();
