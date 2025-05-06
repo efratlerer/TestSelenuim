@@ -1,0 +1,1 @@
+{"uuid":"1b0706d5-08be-482d-a8a8-a7ca5a96e70f","name":"TestSelenuim","children":["a12ad7de-4de0-49a3-a828-0d5368136288"],"befores":[{"name":"beforeClass","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1746519467192,"stop":1746519480371}],"afters":[],"start":1746519467141,"stop":1746519480948}
